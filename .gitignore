@@ -1,0 +1,6 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+build/
+.DS_Store
+villoren.public.txt

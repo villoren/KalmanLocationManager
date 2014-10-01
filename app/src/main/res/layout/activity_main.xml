@@ -1,0 +1,76 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+    />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/activity_main_label_margin"
+        android:padding="@dimen/activity_main_label_padding"
+        android:background="@color/activity_main_label_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvGps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textColor="@color/activity_main_label_gps"
+            android:textStyle="bold"
+            android:text="@string/activity_main_label_gps"
+        />
+
+        <TextView
+            android:id="@+id/tvNet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textColor="@color/activity_main_label_net"
+            android:textStyle="bold"
+            android:text="@string/activity_main_label_net"
+        />
+
+        <TextView
+            android:id="@+id/tvKal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textColor="@color/activity_main_label_kal"
+            android:textStyle="bold"
+            android:text="@string/activity_main_label_kal"
+        />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAlt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_main_label_margin"
+        android:padding="@dimen/activity_main_label_padding"
+        android:background="@color/activity_main_label_background"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+        android:textColor="@color/activity_main_label_alt"
+        android:textStyle="bold"
+        android:text="@string/activity_main_fmt_alt"
+    />
+
+    <SeekBar
+        android:id="@+id/sbZoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/activity_main_zoom_margin"
+        android:max="90"
+    />
+
+</FrameLayout>

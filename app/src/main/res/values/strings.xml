@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kalman Location Manager</string>
+    <string name="activity_main_label_gps">GPS</string>
+    <string name="activity_main_label_net">NET</string>
+    <string name="activity_main_label_kal">KAL</string>
+    <string name="activity_main_fmt_alt">Altitude: %s m</string>
+
+</resources>

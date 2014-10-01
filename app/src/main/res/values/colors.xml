@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="activity_main_label_background">#C000</color>
+
+    <color name="activity_main_label_gps">#FF33</color>
+    <color name="activity_main_stroke_gps">#8F33</color>
+    <color name="activity_main_fill_gps">#2F33</color>
+
+    <color name="activity_main_label_net">#F0D0</color>
+    <color name="activity_main_stroke_net">#80D0</color>
+    <color name="activity_main_fill_net">#20D0</color>
+
+    <color name="activity_main_label_kal">#F66F</color>
+
+    <color name="activity_main_label_alt">#F888</color>
+
+</resources>

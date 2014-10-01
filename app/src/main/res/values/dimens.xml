@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <dimen name="activity_main_label_margin">12dp</dimen>
+    <dimen name="activity_main_label_padding">6dp</dimen>
+
+    <dimen name="activity_main_zoom_margin">30dp</dimen>
+
+</resources>
