@@ -116,7 +116,6 @@ class Tracker1D {
         // K = P.H'.S^(-1)
         double Ka = mPa * si;
         double Kb = mPc * si;
-        System.out.printf("%.4f; %.4f\n", Ka, Kb); // REM
 
         // x = x + K.y
         mXa = mXa + Ka * y;
