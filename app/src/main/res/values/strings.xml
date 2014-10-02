@@ -6,5 +6,6 @@
     <string name="activity_main_label_net">NET</string>
     <string name="activity_main_label_kal">KAL</string>
     <string name="activity_main_fmt_alt">Altitude: %s m</string>
+    <string name="activity_main_action_settings">Location settings</string>
 
 </resources>

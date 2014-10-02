@@ -26,6 +26,7 @@ package com.villoren.android.kalmanlocationmanager.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -34,6 +35,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.SeekBar;
@@ -118,6 +122,8 @@ public class MainActivity extends Activity {
         }
 
         // UI elements
+
+
         mMapView = (MapView) findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
@@ -182,6 +188,29 @@ public class MainActivity extends Activity {
 
         // Init altitude textview
         tvAlt.setText(getString(R.string.activity_main_fmt_alt, "-"));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.action_settings:
+
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                return true;
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
