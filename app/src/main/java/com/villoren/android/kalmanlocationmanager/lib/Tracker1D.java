@@ -34,7 +34,7 @@ class Tracker1D {
     /**
      * Time step
      */
-    private final double mt, mt2, mt2d2;
+    private final double mt, mt2, mt2d2, mt3d2, mt4d4;
 
     /**
      * Process noise covariance
@@ -59,21 +59,19 @@ class Tracker1D {
      */
     public Tracker1D(double timeStep, double processNoise) {
 
-        // Lookup
+        // Lookup time step
         mt = timeStep;
         mt2 = mt * mt;
         mt2d2 = mt2 / 2.0;
-
-        // Time step
-        double t3 = mt2 * timeStep;
-        double t4 = t3 * timeStep;
+        mt3d2 = mt2 * mt / 2.0;
+        mt4d4 = mt2 * mt2 / 4.0;
 
         // Process noise covariance
-        double pn2 = processNoise * processNoise;
-        mQa = pn2 * t4 / 4.0;
-        mQb = pn2 * t3 / 2.0;
+        double n2 = processNoise * processNoise;
+        mQa = n2 * mt4d4;
+        mQb = n2 * mt3d2;
         mQc = mQb;
-        mQd = pn2 * mt2;
+        mQd = n2 * mt2;
 
         // Estimated covariance
         mPa = mQa;
@@ -89,11 +87,20 @@ class Tracker1D {
      *
      * @param position
      * @param velocity
+     * @param noise
      */
-    public void setState(double position, double velocity) {
+    public void setState(double position, double velocity, double noise) {
 
+        // State vector
         mXa = position;
         mXb = velocity;
+
+        // Covariance
+        double n2 = noise * noise;
+        mPa = n2 * mt4d4;
+        mPb = n2 * mt3d2;
+        mPc = mPb;
+        mPd = n2 * mt2;
     }
 
     /**

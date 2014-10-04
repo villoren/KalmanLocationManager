@@ -157,7 +157,7 @@ class LooperThread extends Thread {
             if (mLatitudeTracker == null) {
 
                 mLatitudeTracker = new Tracker1D(TIME_STEP, COORDINATE_NOISE);
-                mLatitudeTracker.setState(position, 0.0);
+                mLatitudeTracker.setState(position, 0.0, noise);
             }
 
             mLatitudeTracker.update(position, noise);
@@ -169,7 +169,7 @@ class LooperThread extends Thread {
             if (mLongitudeTracker == null) {
 
                 mLongitudeTracker = new Tracker1D(TIME_STEP, COORDINATE_NOISE);
-                mLongitudeTracker.setState(position, 0.0);
+                mLongitudeTracker.setState(position, 0.0, noise);
             }
 
             mLongitudeTracker.update(position, noise);
@@ -183,7 +183,7 @@ class LooperThread extends Thread {
                 if (mAltitudeTracker == null) {
 
                     mAltitudeTracker = new Tracker1D(TIME_STEP, ALTITUDE_NOISE);
-                    mAltitudeTracker.setState(position, noise);
+                    mAltitudeTracker.setState(position, 0.0, noise);
                 }
 
                 mAltitudeTracker.update(position, noise);
