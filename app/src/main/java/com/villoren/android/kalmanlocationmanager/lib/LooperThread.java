@@ -24,7 +24,6 @@
 
 package com.villoren.android.kalmanlocationmanager.lib;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
@@ -71,6 +70,7 @@ class LooperThread extends Thread {
     private Looper mLooper;
     private Handler mOwnHandler;
     private Location mLastLocation;
+    private boolean mPredicted;
 
     /**
      * Three 1-dimension trackers, since the dimensions are independent and can avoid using matrices.
@@ -160,6 +160,9 @@ class LooperThread extends Thread {
                 mLatitudeTracker.setState(position, 0.0, noise);
             }
 
+            if (!mPredicted)
+                mLatitudeTracker.predict(0.0);
+
             mLatitudeTracker.update(position, noise);
 
             // Longitude
@@ -171,6 +174,9 @@ class LooperThread extends Thread {
                 mLongitudeTracker = new Tracker1D(TIME_STEP, COORDINATE_NOISE);
                 mLongitudeTracker.setState(position, 0.0, noise);
             }
+
+            if (!mPredicted)
+                mLongitudeTracker.predict(0.0);
 
             mLongitudeTracker.update(position, noise);
 
@@ -186,8 +192,14 @@ class LooperThread extends Thread {
                     mAltitudeTracker.setState(position, 0.0, noise);
                 }
 
+                if (!mPredicted)
+                    mAltitudeTracker.predict(0.0);
+
                 mAltitudeTracker.update(position, noise);
             }
+
+            // Reset predicted flag
+            mPredicted = false;
 
             // Forward update if requested
             if (mForwardProviderUpdates) {
@@ -197,7 +209,7 @@ class LooperThread extends Thread {
                     @Override
                     public void run() {
 
-                        mClientLocationListener.onLocationChanged(location);
+                        mClientLocationListener.onLocationChanged(new Location(location));
                     }
                 });
             }
@@ -270,12 +282,6 @@ class LooperThread extends Thread {
         @Override
         public boolean handleMessage(Message msg) {
 
-            // Calculate prediction
-            mLongitudeTracker.predict(0.0);
-
-            if (mLastLocation.hasAltitude())
-                mAltitudeTracker.predict(0.0);
-
             // Prepare location
             final Location location = new Location(KALMAN_PROVIDER);
 
@@ -324,6 +330,7 @@ class LooperThread extends Thread {
             // Enqueue next prediction
             mOwnHandler.removeMessages(0);
             mOwnHandler.sendEmptyMessageDelayed(0, mMinTimeFilter);
+            mPredicted = true;
 
             return true;
         }
