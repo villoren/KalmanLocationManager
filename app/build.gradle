@@ -1,29 +1,32 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.1'
-    }
-}
-apply plugin: 'android'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
 
     defaultConfig {
+        applicationId "com.villoren.android.kalmanlocationmanager.app"
         minSdkVersion 16
-        targetSdkVersion 18
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 23
+        versionCode 2
+        versionName "1.0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 
     signingConfigs {
+
+        debug {
+            storeFile file("../villoren.public.jks")
+            storePassword "villoren.public"
+            keyAlias "villoren.public"
+            keyPassword "villoren.public"
+        }
 
         release {
             storeFile file("../villoren.public.jks")
@@ -32,17 +35,9 @@ android {
             keyPassword "villoren.public"
         }
     }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.android.gms:play-services:5.2.+'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:7.8.0'
 }
