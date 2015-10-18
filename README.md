@@ -20,6 +20,7 @@ Changes:
 
 * Updated for Studio 1.4, Api level 23 (see "To do")
 * Forcing prediction step between consecutive correction steps (reduce overshoot)
+
 ---
 
 To do:
@@ -27,7 +28,8 @@ To do:
 * Add some missing javadoc
 * Make example MainActivity nice
 * Make this readme nice
-* Handle new Security exceptions when requesting/removing location updates.
+* Handle new Security exceptions when requesting/removing location updates
+
 ---
 
 Copyright (c) 2014 Renato Villone.
