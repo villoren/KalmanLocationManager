@@ -1,5 +1,7 @@
 # KalmanLocationManager
 
+[Important: UPDATE MAY 2018 - Google Maps Api Key](https://github.com/villoren/KalmanLocationManager/issues/9)
+
 Use KalmanLocationManager in Android to receive filtered Location estimates.
 
 It takes advantage of a Kalman filter algorithm to predict fixes (ordinary Android `Location` objects).
